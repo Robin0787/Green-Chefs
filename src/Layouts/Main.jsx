@@ -4,7 +4,7 @@ import Navbar from '../Pages/Shared/Navbar';
 
 const Main = () => {
     return (
-        <div className='md:w-[90%] mx-auto shadow-2xl rounded-2xl'>
+        <div className='w-[90%] mx-auto'>
             <Navbar />
             <Outlet />
         </div>
