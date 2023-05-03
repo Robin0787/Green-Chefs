@@ -1,0 +1,16 @@
+.active {
+  position: relative;
+  color: green;
+  padding-bottom: 3px;
+}
+
+.active::before {
+  position: absolute;
+  content: "";
+  height: 3px;
+  width: 100%;
+  background-color: rgba(54, 212, 54, 0.493);
+  left: 0;
+  bottom: 0;
+  border-radius: 20px;
+}
