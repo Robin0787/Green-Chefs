@@ -6,7 +6,6 @@ import { Link, useLoaderData } from 'react-router-dom';
 
 const ChefDetails = () => {
     const chefDetails = useLoaderData();
-    console.log(chefDetails);
     return (
         <section className='w-[90%] mx-auto space-y-4 my-10'>
             <article key={chefDetails.chef_id} className="md:flex py-2 gap-2 ">
@@ -42,9 +41,9 @@ function ShowRecipes({ recipe }) {
     return (
         <div className="card card-compact shadow-lg p-4">
             <figure><img src={recipe_image} alt="Shoes" /></figure>
-            <div className="space-y-1">
-                <div>
-                <h2 className="card-title text-xl text-gray-700 mt-4">{recipe_name}</h2>
+            <div className="space-y-1 flex flex-col justify-between h-full">
+                <div className='space-y-2'>
+                <h2 className="card-title text-xl text-gray-700 my-4">{recipe_name}</h2>
                 <p className="text-sm font-semibold text-gray-500">Cooking method : </p>
                 <p className='text-sm text-gray-400'>{cooking_method}</p>
                 <div>
