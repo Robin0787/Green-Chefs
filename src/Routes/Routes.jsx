@@ -3,9 +3,13 @@ import { createBrowserRouter } from 'react-router-dom';
 import Main from '../Layouts/Main';
 import Login from "../Pages/Authentication/Login/Login";
 import SignUp from '../Pages/Authentication/SignUp/SignUp';
+import Blogs from '../Pages/Blogs/Blogs';
 import ChefDetails from '../Pages/ChefDetails.jsx/ChefDetails';
+import ErrorPage from '../Pages/ErrorPage/ErrorPage';
 import Home from '../Pages/Home/Home';
 import ProtectedRoute from '../Pages/ProtectedRoute/ProtectedRoute';
+import UserDetails from '../Pages/UserDetails/UserDetails';
+
 const Router = createBrowserRouter([
     {
         path: '/',
@@ -24,21 +28,24 @@ const Router = createBrowserRouter([
                 element: <SignUp />
             },
             {
-                path: 'blog',
-                element: <p className='text-center text-3xl text-green-500'>Blog</p>
+                path: 'blogs',
+                element: <Blogs />
             },
             {
                 path: 'chef/:id',
                 element: <ProtectedRoute><ChefDetails /></ProtectedRoute>,
                 loader: ({params}) => fetch(`https://green-cehfs-server-robin0787.vercel.app/chef/${params.id}`)
+            },
+            {
+                path: '/userDetails',
+                element: <UserDetails />
             }
         ]
+    },
+    {
+        path: '*',
+        element: <ErrorPage />
     }
-    // {
-    //     path: '/chef/:id',
-    //     element: <ChefDetails />,
-    //     loader: ({params}) => fetch(`https://green-cehfs-server-robin0787.vercel.app/chef/${params.id}`)
-    // }
 ])
 
 export default Router;

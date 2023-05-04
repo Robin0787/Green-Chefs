@@ -18,7 +18,7 @@ const Navbar = () => {
     }
     return (
         <div>
-            <div className="navbar text-black">
+            <div className="navbar text-black bg-gray-100 rounded-b-xl">
                 <div className="navbar-start ">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -26,7 +26,7 @@ const Navbar = () => {
                         </label>
                         <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow rounded-box w-52 bg-white text-black">
                             <NavLink className={({ isActive }) => isActive ? 'active' : 'bg-white'} to='/'>Home</NavLink>
-                            <NavLink className={({ isActive }) => isActive ? 'active' : 'bg-white'} to='/blog'>Blog</NavLink>
+                            <NavLink className={({ isActive }) => isActive ? 'active' : 'bg-white'} to='/blogs'>Blogs</NavLink>
                         </ul>
                     </div>
                     <div className='flex justify-center items-center gap-2 py-2 px-4 cursor-pointer rounded-md text-green-700 hover:text-green-500 duration-300' onClick={() => navigate('/')}>
@@ -37,7 +37,7 @@ const Navbar = () => {
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 space-x-5 text-gray-400">
                         <NavLink className={({ isActive }) => isActive ? 'active' : ''} to='/'>Home</NavLink>
-                        <NavLink className={({ isActive }) => isActive ? 'active' : ''} to='/blog'>Blog</NavLink>
+                        <NavLink className={({ isActive }) => isActive ? 'active' : ''} to='/blogs'>Blogs</NavLink>
                     </ul>
                 </div>
                 <div className="ml-auto">
@@ -53,11 +53,9 @@ const Navbar = () => {
                                     <Tooltip id='my-tooltip' />
                                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-white text-black rounded-box w-52">
                                         <li>
-                                            <a className="justify-between">
-                                                {user.displayName}
-                                            </a>
+                                            <Link to='/userDetails' className="justify-between">Profile</Link>
                                         </li>
-                                        <li onClick={handleLogOut}><a>Logout</a></li>
+                                        <li onClick={handleLogOut}><a>Log Out</a></li>
                                     </ul>
                                 </div>
                                 :

@@ -2,7 +2,7 @@ import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/solid';
 import { updateProfile } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { authContext } from '../../../AuthProvider/AuthProvider';
 const SignUp = () => {
     const [validatePass, setValidatePass] = useState('');
@@ -10,7 +10,9 @@ const SignUp = () => {
     const [showPass, setShowPass] = useState(false);
     const [showEyeIcon, setShowEyeIcon] = useState(false);
     const { registerWithEmailAndPass } = useContext(authContext);
-
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/';
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
@@ -28,6 +30,7 @@ const SignUp = () => {
                     toast.success('SignUp Successful');
                     e.target.reset();
                     setShowEyeIcon(false);
+                    navigate(from, {replace: true});
                     updateProfile(result.user, { displayName: name, photoURL: image })
                         .catch(err => { toast.error(err.message) });
                 })
