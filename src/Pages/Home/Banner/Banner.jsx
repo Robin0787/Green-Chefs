@@ -5,8 +5,8 @@ import third from "../../../assets/Home_Images/chicken_biriyani.avif";
 import fourth from "../../../assets/Home_Images/chicken_roast.avif";
 const Banner = () => {
     return (
-        <div className='grid grid-cols-1 lg:grid-cols-[6fr_4fr] lg:gap-5 py-10'>
-            <div className='px-3 lg:py-20 text-black space-y-5'>
+        <div className='grid grid-cols-1 lg:grid-cols-[6fr_4fr] lg:gap-5 py-10 bg-gray-100 mt-5 rounded-lg'>
+            <div className='px-3 md:px-5 lg:py-20 text-black space-y-5'>
                 <h1 className="text-4xl md:text-5xl text-center lg:text-left font-bold leading-tight">Discover Authentic Bangladeshi Cuisine with <span className="text-green-600">Green Chef</span></h1>
                 <p className="text-sm md:text-md lg:w-4/5 text-justify text-gray-500"> Indulge in the rich and diverse flavors of Bangladeshi cuisine with Green Chef. Our website features a wide variety of authentic recipes that are sure to tantalize your taste buds. From spicy curries to savory snacks, we have everything you need to create an authentic Bangladeshi meal right in your own kitchen. Join us on a culinary adventure and discover the delicious and unique dishes of Bangladesh with Green Chef</p>
             </div>
