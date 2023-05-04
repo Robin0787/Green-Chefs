@@ -8,7 +8,7 @@ import google from '../../../assets/google.png';
 const Login = () => {
     const [showEyeIcon, setShowEyeIcon] = useState(false);
     const [showPass, setShowPass] = useState(false);
-    const {logInWithGoogle, logInWithGithub, logInWithEmailAndPass} = useContext(authContext);
+    const {logInWithGoogle, logInWithGithub, logInWithEmailAndPass, passwordReset} = useContext(authContext);
     const emailRef = useRef();
     const navigate = useNavigate();
     const location = useLocation();
@@ -32,6 +32,7 @@ const Login = () => {
         .catch(err => toast.error(err.message.slice(22, -2).replace(/-/g, ' ')));
     }
 
+    
     const handleLoginSubmit = (e) => {
         e.preventDefault();
         const email = e.target.email.value;
@@ -46,6 +47,7 @@ const Login = () => {
         .catch(err => toast.error(err.message.slice(22, -2).replace(/-/g, ' ')));
     }
 
+
     function handlePassChange(e) {
         const pass = e.target.value;
         if(pass.length > 0) {
@@ -54,6 +56,20 @@ const Login = () => {
         else {
             setShowEyeIcon(false);
         }
+    }
+
+    // Password reset function
+
+    function resetPassword () {
+        const email = emailRef.current.value;
+        if(!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+           toast.error('Invalid Email');
+           return;
+        }
+        passwordReset(email)
+        .then(() => toast.success('Email Sent'))
+        .catch(err => toast.error('Error'));
+
     }
 
     return (
@@ -74,9 +90,10 @@ const Login = () => {
                     :
                     ''
                 }
+                <p className='text-sm text-gray-700 mt-1'>Forgot password? <span className='text-green-700 cursor-pointer' onClick={resetPassword}>reset</span></p>
                 </div>
                 <button type="submit" className='bg-green-500 text-md duration-500 hover:bg-green-400 text-white w-full font-semibold py-2 mt-5'>Login</button>
-                <p className='text-sm text-center text-gray-700 mt-1'>Don't have an account? <Link to='/signup' className='text-green-600'>Sign Up</Link></p>
+                <p className='text-sm text-center text-gray-700 mt-1'>Don't have an account? <Link to='/signup' className='text-green-700'>Sign Up</Link></p>
                 <div className="flex justify-between items-center gap-3 my-5">
                     <hr className='w-2/3' />
                     <span className='text-xs'>Or</span>
